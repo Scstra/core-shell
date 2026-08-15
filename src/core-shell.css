@@ -275,3 +275,62 @@
   .core-header__org { display: none; }
   .core-header__brand { padding: 0 14px; }
 }
+
+/* ── Slot livre ───────────────────────────────────────────────────────────
+   Cada sistema põe no slot o que só ele tem — busca, sinos, atalhos. Estes
+   estilos existem para que esses controles nasçam com a mesma densidade e o
+   mesmo peso do resto do topo, em vez de cada sistema inventar o seu. */
+
+.core-header__slot-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: center;
+  position: relative;
+  height: 34px;
+  margin: 0 4px;
+  padding: 0 12px;
+  background: none;
+  border: 1px solid var(--core-border);
+  border-radius: var(--core-radius);
+  color: var(--core-muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.core-header__slot-button:hover {
+  color: var(--core-fg);
+  border-color: var(--core-border-strong);
+}
+
+.core-header__slot-button--icon {
+  width: 34px;
+  padding: 0;
+  justify-content: center;
+}
+
+.core-header__kbd {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--core-hover);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.core-header__slot-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--core-accent);
+  color: var(--core-accent-fg);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: center;
+}

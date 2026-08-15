@@ -1,6 +1,6 @@
 {
   "name": "@semcostura/core-shell",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Topo unificado do CORE, compartilhado entre os sistemas Sem Costura",
   "type": "module",
   "main": "./src/index.ts",
@@ -9,9 +9,13 @@
     ".": "./src/index.ts",
     "./core-shell.css": "./src/core-shell.css"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "peerDependencies": {
     "react": ">=18"
   },
-  "sideEffects": ["*.css"]
+  "sideEffects": [
+    "*.css"
+  ]
 }
