@@ -175,15 +175,18 @@ export function CoreHeader({
         </div>
       )}
 
-      {onSearch ? (
+      {onSearch && (
         <button type="button" className="core-header__search" onClick={onSearch} aria-label="Buscar no CORE">
           <IconeLupa />
           <span className="core-header__search-label">Buscar no CORE...</span>
           <kbd className="core-header__kbd">⌘ K</kbd>
         </button>
-      ) : (
-        <div className="core-header__spacer" />
       )}
+
+      {/* Empurra o grupo da direita até a borda. Sem ele o topo termina no meio
+          da tela e sobra um vazio depois do avatar — a busca cresce só até o
+          próprio limite e ninguém absorve o resto. */}
+      <div className="core-header__spacer" />
 
       <div className="core-header__cell core-header__org">
         <IconePredio />
