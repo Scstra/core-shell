@@ -1,0 +1,277 @@
+/**
+ * Tokens e estilo do topo do CORE.
+ *
+ * CSS puro com variáveis próprias, e não Tailwind, por um motivo prático: os
+ * dois consumidores têm configurações de Tailwind diferentes, e uma classe
+ * utilitária compartilhada só funcionaria se o build de cada um varresse os
+ * arquivos do pacote. Um CSS importado funciona nos dois sem configurar nada.
+ *
+ * Os tokens usam prefixo `--core-` para não colidir com os temas existentes de
+ * cada sistema.
+ */
+
+:root {
+  --core-bg: #ffffff;
+  --core-fg: #0a0a0a;
+  --core-muted: #6b7280;
+  --core-border: #e5e7eb;
+  --core-border-strong: #d1d5db;
+  --core-accent: #0a0a0a;
+  --core-accent-fg: #ffffff;
+  --core-hover: #f4f4f5;
+
+  --core-header-h: 56px;
+  --core-radius: 8px;
+  --core-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* O topo acompanha o tema escuro do sistema hospedeiro quando existir. */
+.dark, [data-theme="dark"] {
+  --core-bg: #0a0a0a;
+  --core-fg: #fafafa;
+  --core-muted: #a1a1aa;
+  --core-border: #27272a;
+  --core-border-strong: #3f3f46;
+  --core-accent: #fafafa;
+  --core-accent-fg: #0a0a0a;
+  --core-hover: #18181b;
+}
+
+.core-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: stretch;
+  height: var(--core-header-h);
+  background: var(--core-bg);
+  color: var(--core-fg);
+  border-bottom: 1px solid var(--core-border);
+  font-family: var(--core-font);
+}
+
+.core-header__brand {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--core-border);
+  color: inherit;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.core-header__wordmark {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  /* O espaçamento largo joga o texto para a direita; o recuo compensa. */
+  margin-right: -0.42em;
+}
+
+.core-header__switcher,
+.core-header__user {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.core-header__switcher-trigger,
+.core-header__user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 0 18px;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--core-border);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.core-header__user-trigger {
+  border-right: 0;
+  border-left: 1px solid var(--core-border);
+  padding: 0 14px;
+}
+
+.core-header__switcher-trigger:hover,
+.core-header__user-trigger:hover {
+  background: var(--core-hover);
+}
+
+.core-header__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--core-accent);
+  flex-shrink: 0;
+}
+
+.core-header__system {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.core-header__chevron {
+  font-size: 0.7rem;
+  color: var(--core-muted);
+  line-height: 1;
+}
+
+.core-header__section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+  font-size: 0.875rem;
+  color: var(--core-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.core-header__sep { color: var(--core-muted); }
+
+.core-header__spacer { flex: 1 1 auto; min-width: 8px; }
+
+.core-header__org {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-left: 1px solid var(--core-border);
+  flex-shrink: 0;
+}
+
+.core-header__org-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.core-header__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--core-border-strong);
+  object-fit: cover;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ── Menus ────────────────────────────────────────────────────────────── */
+
+.core-header__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  min-width: 304px;
+  padding: 6px;
+  background: var(--core-bg);
+  border: 1px solid var(--core-border);
+  border-radius: var(--core-radius);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 12%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.core-header__menu--systems { left: 12px; }
+.core-header__menu--user { right: 12px; min-width: 240px; }
+
+.core-header__menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.core-header__menu-item:hover:not(.is-disabled):not(.is-active) {
+  background: var(--core-hover);
+}
+
+.core-header__menu-name {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.core-header__menu-desc {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 0.75rem;
+  color: var(--core-muted);
+}
+
+.core-header__menu-item.is-active { background: var(--core-hover); }
+
+/* Sistema sem URL fica visível e inerte: some do caminho sem sumir da lista,
+   para o operador saber que ele existe e ainda não foi configurado. */
+.core-header__menu-item.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.core-header__badge {
+  /* Fixo na coluna 2, linha 1: sem isso o selo cai para baixo da descrição e
+     estica a largura toda. */
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--core-accent);
+  color: var(--core-accent-fg);
+}
+
+.core-header__identity {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--core-border);
+  margin-bottom: 4px;
+}
+
+.core-header__identity-name { font-size: 0.875rem; font-weight: 600; }
+.core-header__identity-email { font-size: 0.75rem; color: var(--core-muted); }
+
+.core-header__menu-action {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.core-header__menu-action:hover { background: var(--core-hover); }
+.core-header__menu-action--danger { color: #dc2626; }
+
+/* ── Telas estreitas ──────────────────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .core-header__section,
+  .core-header__org { display: none; }
+  .core-header__brand { padding: 0 14px; }
+}
