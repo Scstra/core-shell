@@ -6,32 +6,34 @@
  * utilitária compartilhada só funcionaria se o build de cada um varresse os
  * arquivos do pacote. Um CSS importado funciona nos dois sem configurar nada.
  *
- * Os tokens usam prefixo `--core-` para não colidir com os temas existentes de
- * cada sistema.
+ * Os tokens usam prefixo `--core-` para não colidir com os temas de cada
+ * sistema.
  */
 
 :root {
   --core-bg: #ffffff;
   --core-fg: #0a0a0a;
   --core-muted: #6b7280;
-  --core-border: #e5e7eb;
+  --core-border: #e8e8ea;
   --core-border-strong: #d1d5db;
   --core-accent: #0a0a0a;
   --core-accent-fg: #ffffff;
-  --core-hover: #f4f4f5;
+  --core-hover: #f5f5f6;
 
-  --core-header-h: 56px;
+  --core-header-h: 80px;
+  /* Largura da célula da marca — acompanha o trilho lateral do sistema, para o
+     "C" ficar sobre os ícones e a palavra CORE se fechar na horizontal. */
+  --core-rail-w: 88px;
   --core-radius: 8px;
   --core-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
 
-/* O topo acompanha o tema escuro do sistema hospedeiro quando existir. */
 .dark, [data-theme="dark"] {
   --core-bg: #0a0a0a;
   --core-fg: #fafafa;
   --core-muted: #a1a1aa;
-  --core-border: #27272a;
+  --core-border: #26262a;
   --core-border-strong: #3f3f46;
   --core-accent: #fafafa;
   --core-accent-fg: #0a0a0a;
@@ -51,10 +53,25 @@
   font-family: var(--core-font);
 }
 
+/* ── Marca: "C" + "ORE" lidos como uma palavra só ─────────────────────── */
+
+.core-header__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--core-rail-w);
+  flex-shrink: 0;
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .core-header__brand {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 28px 0 4px;
   border-right: 1px solid var(--core-border);
   color: inherit;
   text-decoration: none;
@@ -62,63 +79,76 @@
 }
 
 .core-header__wordmark {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.42em;
-  /* O espaçamento largo joga o texto para a direita; o recuo compensa. */
-  margin-right: -0.42em;
+  letter-spacing: 0.44em;
+  /* O espaçamento largo cria um vão à direita da última letra; o recuo devolve
+     a simetria com o "C". */
+  margin-right: -0.44em;
 }
 
-.core-header__switcher,
-.core-header__user {
+/* ── Células ──────────────────────────────────────────────────────────── */
+
+.core-header__cell {
   position: relative;
   display: flex;
   flex-shrink: 0;
 }
 
-.core-header__switcher-trigger,
-.core-header__user-trigger {
+.core-header__trigger,
+.core-header__org,
+.core-header__env {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   height: 100%;
-  padding: 0 18px;
+  padding: 0 22px;
   background: none;
   border: 0;
-  border-right: 1px solid var(--core-border);
   color: inherit;
   font: inherit;
   cursor: pointer;
   transition: background-color 120ms ease;
 }
 
-.core-header__user-trigger {
-  border-right: 0;
-  border-left: 1px solid var(--core-border);
-  padding: 0 14px;
-}
+.core-header__org,
+.core-header__env { border-left: 1px solid var(--core-border); }
 
-.core-header__switcher-trigger:hover,
-.core-header__user-trigger:hover {
-  background: var(--core-hover);
-}
+.core-header__trigger:hover,
+.core-header__org:hover,
+.core-header__env:hover { background: var(--core-hover); }
 
-.core-header__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: var(--core-accent);
+.core-header__icon {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
 .core-header__system {
   font-size: 0.875rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
+.core-header__org-name,
+.core-header__env-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.core-header__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--core-accent);
+  flex-shrink: 0;
+}
+
 .core-header__chevron {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--core-muted);
   line-height: 1;
 }
@@ -126,43 +156,102 @@
 .core-header__section {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 0 18px;
-  font-size: 0.875rem;
-  color: var(--core-fg);
+  gap: 18px;
+  padding: 0 22px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.core-header__sep { color: var(--core-muted); }
+
+.core-header__section-name {
+  font-size: 0.9rem;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.core-header__sep { color: var(--core-muted); }
-
 .core-header__spacer { flex: 1 1 auto; min-width: 8px; }
 
-.core-header__org {
+/* ── Busca ────────────────────────────────────────────────────────────── */
+
+.core-header__search {
   display: flex;
   align-items: center;
-  padding: 0 18px;
-  border-left: 1px solid var(--core-border);
-  flex-shrink: 0;
+  gap: 12px;
+  align-self: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 430px;
+  height: 44px;
+  margin: 0 22px;
+  padding: 0 14px;
+  background: var(--core-bg);
+  border: 1px solid var(--core-border);
+  border-radius: var(--core-radius);
+  color: var(--core-muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
 }
 
-.core-header__org-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  white-space: nowrap;
+.core-header__search:hover {
+  border-color: var(--core-border-strong);
+  color: var(--core-fg);
 }
+
+.core-header__search-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.core-header__kbd {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--core-hover);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--core-muted);
+}
+
+/* ── Identidade ───────────────────────────────────────────────────────── */
+
+.core-header__user { position: relative; display: flex; flex-shrink: 0; }
+
+.core-header__user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 0 20px;
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--core-border);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.core-header__user-trigger:hover { background: var(--core-hover); }
 
 .core-header__avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   border: 1px solid var(--core-border-strong);
   object-fit: cover;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -170,7 +259,7 @@
 
 .core-header__menu {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% - 8px);
   min-width: 304px;
   padding: 6px;
   background: var(--core-bg);
@@ -195,36 +284,18 @@
   text-decoration: none;
 }
 
-.core-header__menu-item:hover:not(.is-disabled):not(.is-active) {
-  background: var(--core-hover);
-}
+.core-header__menu-item:hover:not(.is-disabled):not(.is-active) { background: var(--core-hover); }
 
-.core-header__menu-name {
-  grid-column: 1;
-  grid-row: 1;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.core-header__menu-desc {
-  grid-column: 1;
-  grid-row: 2;
-  font-size: 0.75rem;
-  color: var(--core-muted);
-}
+.core-header__menu-name { grid-column: 1; grid-row: 1; font-size: 0.875rem; font-weight: 600; }
+.core-header__menu-desc { grid-column: 1; grid-row: 2; font-size: 0.75rem; color: var(--core-muted); }
 
 .core-header__menu-item.is-active { background: var(--core-hover); }
 
 /* Sistema sem URL fica visível e inerte: some do caminho sem sumir da lista,
    para o operador saber que ele existe e ainda não foi configurado. */
-.core-header__menu-item.is-disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
+.core-header__menu-item.is-disabled { opacity: 0.45; cursor: not-allowed; }
 
 .core-header__badge {
-  /* Fixo na coluna 2, linha 1: sem isso o selo cai para baixo da descrição e
-     estica a largura toda. */
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
@@ -268,69 +339,57 @@
 .core-header__menu-action:hover { background: var(--core-hover); }
 .core-header__menu-action--danger { color: #dc2626; }
 
-/* ── Telas estreitas ──────────────────────────────────────────────────── */
-
-@media (max-width: 720px) {
-  .core-header__section,
-  .core-header__org { display: none; }
-  .core-header__brand { padding: 0 14px; }
-}
-
 /* ── Slot livre ───────────────────────────────────────────────────────────
-   Cada sistema põe no slot o que só ele tem — busca, sinos, atalhos. Estes
-   estilos existem para que esses controles nasçam com a mesma densidade e o
-   mesmo peso do resto do topo, em vez de cada sistema inventar o seu. */
+   Cada sistema põe no slot o que só ele tem — sinos, contadores, atalhos.
+   Estes estilos existem para que nasçam com a densidade do resto do topo. */
 
 .core-header__slot-button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  align-self: center;
-  position: relative;
-  height: 34px;
-  margin: 0 4px;
-  padding: 0 12px;
-  background: none;
-  border: 1px solid var(--core-border);
-  border-radius: var(--core-radius);
-  color: var(--core-muted);
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: color 120ms ease, border-color 120ms ease;
-}
-
-.core-header__slot-button:hover {
-  color: var(--core-fg);
-  border-color: var(--core-border-strong);
-}
-
-.core-header__slot-button--icon {
-  width: 34px;
-  padding: 0;
   justify-content: center;
+  position: relative;
+  width: 56px;
+  height: 100%;
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--core-border);
+  color: var(--core-muted);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
 }
 
-.core-header__kbd {
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: var(--core-hover);
-  font-size: 0.6875rem;
-  font-weight: 500;
-}
+.core-header__slot-button:hover { background: var(--core-hover); color: var(--core-fg); }
 
 .core-header__slot-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  min-width: 16px;
+  top: 22px;
+  right: 14px;
+  min-width: 17px;
   padding: 0 4px;
   border-radius: 999px;
   background: var(--core-accent);
   color: var(--core-accent-fg);
   font-size: 0.625rem;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 17px;
   text-align: center;
+}
+
+/* ── Telas estreitas ──────────────────────────────────────────────────── */
+
+@media (max-width: 1180px) {
+  .core-header__section { display: none; }
+}
+
+@media (max-width: 900px) {
+  .core-header__org,
+  .core-header__env { display: none; }
+}
+
+@media (max-width: 640px) {
+  .core-header__search-label,
+  .core-header__kbd { display: none; }
+  .core-header__search { flex: 0 0 auto; width: 44px; justify-content: center; }
+  .core-header__mark { width: 56px; }
+  .core-header__brand { display: none; }
 }
