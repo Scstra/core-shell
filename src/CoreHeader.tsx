@@ -34,6 +34,12 @@ export interface CoreHeaderProps {
   onSearch?: () => void;
   onSignOut?: () => void;
   userMenuItems?: { label: string; onSelect: () => void }[];
+  /**
+   * Fixa o topo no alto da janela ao rolar. Padrão `true`, que é como o
+   * Customers sempre se comportou; o Supply desliga porque as listas longas de
+   * cadastro rendem mais com a tela inteira.
+   */
+  sticky?: boolean;
   /** Slot antes da identidade — sinos, contadores, o que cada sistema tiver. */
   children?: ReactNode;
 }
@@ -76,6 +82,7 @@ export function CoreHeader({
   onSearch,
   onSignOut,
   userMenuItems = [],
+  sticky = true,
   children,
 }: CoreHeaderProps) {
   const [trocadorAberto, setTrocadorAberto] = useState(false);
@@ -100,7 +107,7 @@ export function CoreHeader({
   const pararPropagacao = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
-    <header className="core-header">
+    <header className={`core-header${sticky ? '' : ' core-header--static'}`}>
       <a className="core-header__mark" href={systemUrls[system] ?? '#'} aria-label="CORE · início">
         C
       </a>

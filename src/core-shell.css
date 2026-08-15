@@ -44,6 +44,8 @@
   position: sticky;
   top: 0;
   z-index: 40;
+  /* `--core-header-h` continua valendo mesmo sem fixar: os sistemas usam a
+     variável para dimensionar o trilho lateral. */
   display: flex;
   align-items: stretch;
   height: var(--core-header-h);
@@ -52,6 +54,10 @@
   border-bottom: 1px solid var(--core-border);
   font-family: var(--core-font);
 }
+
+/* Sem fixar, o topo rola junto com a página. Continua ocupando a mesma altura,
+   então nada abaixo dele precisa mudar de cálculo. */
+.core-header--static { position: static; }
 
 /* ── Marca: "C" + "ORE" lidos como uma palavra só ─────────────────────── */
 
