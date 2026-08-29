@@ -6,7 +6,7 @@ Topo unificado do CORE. Fonte única do header usado por **Customers**,
 ## Por que fonte e não build
 
 O pacote publica TypeScript/TSX cru (`main` aponta para `src/index.ts`), sem
-etapa de build. Os dois consumidores são projetos Vite que já transpilam TSX, e
+etapa de build. Os consumidores são projetos Vite que já transpilam TSX, e
 uma etapa de build aqui só acrescentaria uma versão para manter desatualizada.
 Quem consumir por outro bundler precisa incluir este pacote na transpilação.
 
@@ -25,8 +25,8 @@ import '@semcostura/core-shell/core-shell.css';
 />
 ```
 
-Um produto pode retirar sistemas que não façam parte do seu menu com
-`hiddenSystems`, sem alterar o catálogo compartilhado nem os demais produtos:
+Insights fica oculto por padrão. Um produto pode definir outra lista de
+sistemas ocultos com `hiddenSystems`:
 
 ```tsx
 <CoreHeader
@@ -43,7 +43,9 @@ essa restrição que permitiu o mesmo código rodar no Customers
 
 ## URLs dos sistemas
 
-Vêm do ambiente, nunca do código:
+O pacote usa como fallback os endereços publicados dos projetos oficiais no
+Lovable. Variáveis de ambiente podem promover domínios próprios sem exigir uma
+nova versão do pacote:
 
 ```
 VITE_CORE_URL_CUSTOMERS=https://...

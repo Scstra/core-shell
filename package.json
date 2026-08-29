@@ -1,6 +1,6 @@
 {
   "name": "@semcostura/core-shell",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Topo unificado do CORE, compartilhado entre os sistemas Sem Costura",
   "type": "module",
   "main": "./src/index.ts",

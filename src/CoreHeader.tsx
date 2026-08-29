@@ -77,7 +77,7 @@ const IconeLupa = () => (
 export function CoreHeader({
   system,
   systemUrls,
-  hiddenSystems = [],
+  hiddenSystems = ['insights'],
   user,
   organization = 'Sem Costura',
   environment,
@@ -92,7 +92,7 @@ export function CoreHeader({
   const [menuAberto, setMenuAberto] = useState(false);
 
   const atual = CORE_SYSTEMS.find((s) => s.id === system);
-  const systems = CORE_SYSTEMS.filter((s) => s.id === system || !hiddenSystems.includes(s.id));
+  const systems = CORE_SYSTEMS.filter((s) => !hiddenSystems.includes(s.id));
 
   // Fecha ao clicar fora ou apertar Esc — sem isso um menu aberto acompanha o
   // usuário pela tela inteira.
