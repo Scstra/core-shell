@@ -24,6 +24,8 @@ export interface CoreUser {
 export interface CoreHeaderProps {
   system: CoreSystemId;
   systemUrls: SystemUrls;
+  /** Sistemas que não devem aparecer no trocador deste produto. */
+  hiddenSystems?: CoreSystemId[];
   user?: CoreUser | null;
   organization?: string;
   /** Ambiente de execução — "Produção", "Homologação". */
@@ -75,6 +77,7 @@ const IconeLupa = () => (
 export function CoreHeader({
   system,
   systemUrls,
+  hiddenSystems = [],
   user,
   organization = 'Sem Costura',
   environment,
@@ -89,6 +92,7 @@ export function CoreHeader({
   const [menuAberto, setMenuAberto] = useState(false);
 
   const atual = CORE_SYSTEMS.find((s) => s.id === system);
+  const systems = CORE_SYSTEMS.filter((s) => s.id === system || !hiddenSystems.includes(s.id));
 
   // Fecha ao clicar fora ou apertar Esc — sem isso um menu aberto acompanha o
   // usuário pela tela inteira.
@@ -132,7 +136,7 @@ export function CoreHeader({
 
         {trocadorAberto && (
           <div className="core-header__menu core-header__menu--systems" role="menu">
-            {CORE_SYSTEMS.map((s) => {
+            {systems.map((s) => {
               const url = systemUrls[s.id];
               if (s.id === system) {
                 return (

@@ -25,6 +25,17 @@ import '@semcostura/core-shell/core-shell.css';
 />
 ```
 
+Um produto pode retirar sistemas que não façam parte do seu menu com
+`hiddenSystems`, sem alterar o catálogo compartilhado nem os demais produtos:
+
+```tsx
+<CoreHeader
+  system="customers"
+  systemUrls={resolveSystemUrls(import.meta.env)}
+  hiddenSystems={["insights"]}
+/>
+```
+
 O componente não importa roteador nem cliente de autenticação: navegação entre
 sistemas é `<a href>` (domínios diferentes), e identidade entra por prop. Foi
 essa restrição que permitiu o mesmo código rodar no Customers
