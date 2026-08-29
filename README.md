@@ -1,7 +1,7 @@
 # @semcostura/core-shell
 
 Topo unificado do CORE. Fonte única do header usado por **Customers**,
-**Commerce**, **Supply**, **Insights** e **Ads**.
+**Commerce**, **Supply**, **Insights** e **Amplify**.
 
 ## Por que fonte e não build
 
@@ -35,6 +35,9 @@ sistemas ocultos com `hiddenSystems`:
   hiddenSystems={["insights"]}
 />
 ```
+
+No seletor, o sistema atual aparece sempre primeiro. Os demais são exibidos em
+ordem alfabética.
 
 O componente não importa roteador nem cliente de autenticação: navegação entre
 sistemas é `<a href>` (domínios diferentes), e identidade entra por prop. Foi

@@ -26,7 +26,7 @@ export const CORE_SYSTEMS: CoreSystem[] = [
   { id: 'commerce', name: 'Commerce', description: 'Loja, catálogo e pedidos de venda' },
   { id: 'supply', name: 'Supply', description: 'Produto, produção, estoque e compras' },
   { id: 'insights', name: 'Insights', description: 'Indicadores e análise' },
-  { id: 'ads', name: 'Ads', description: 'Campanhas e mídia paga' },
+  { id: 'ads', name: 'Amplify', description: 'Campanhas e mídia paga' },
 ];
 
 export type SystemUrls = Partial<Record<CoreSystemId, string>>;

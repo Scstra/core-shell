@@ -92,7 +92,11 @@ export function CoreHeader({
   const [menuAberto, setMenuAberto] = useState(false);
 
   const atual = CORE_SYSTEMS.find((s) => s.id === system);
-  const systems = CORE_SYSTEMS.filter((s) => !hiddenSystems.includes(s.id));
+  const systems = CORE_SYSTEMS.filter((s) => !hiddenSystems.includes(s.id)).sort((a, b) => {
+    if (a.id === system) return -1;
+    if (b.id === system) return 1;
+    return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
+  });
 
   // Fecha ao clicar fora ou apertar Esc — sem isso um menu aberto acompanha o
   // usuário pela tela inteira.
