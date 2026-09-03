@@ -1,6 +1,6 @@
 # @semcostura/core-shell
 
-Topo unificado do CORE. Fonte única do header usado por **Customers**,
+Topo unificado do CORERX. Fonte única do header usado por **Customers**,
 **Commerce**, **Supply**, **Insights** e **Amplify**.
 
 ## Por que fonte e não build

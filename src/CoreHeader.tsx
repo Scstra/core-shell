@@ -1,8 +1,10 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { CORE_SYSTEMS, type CoreSystemId, type SystemUrls } from './systems';
 
+const coreRxLogoUrl = new URL('./corerx-logo.png', import.meta.url).href;
+
 /**
- * Topo unificado do CORE.
+ * Topo unificado do CORERX.
  *
  * Independente de roteador e de autenticação — sem isso não roda nos dois
  * projetos: o Customers usa @tanstack/react-router e o Supply usa
@@ -10,9 +12,8 @@ import { CORE_SYSTEMS, type CoreSystemId, type SystemUrls } from './systems';
  * navegação **entre** sistemas é `<a href>` puro, porque cada sistema mora num
  * domínio diferente e atravessar recarrega a página de qualquer forma.
  *
- * A marca é lida como uma palavra só atravessando duas células: o **C** ocupa a
- * coluna do trilho lateral e o **ORE** vem logo depois. É por isso que o
- * wordmark não escreve "CORE" inteiro — ele completaria a palavra duas vezes.
+ * A marca oficial fica em um único link para preservar proporção e espaçamento
+ * em todos os sistemas, independentemente da largura do trilho lateral local.
  */
 
 export interface CoreUser {
@@ -116,12 +117,8 @@ export function CoreHeader({
 
   return (
     <header className={`core-header${sticky ? '' : ' core-header--static'}`}>
-      <a className="core-header__mark" href={systemUrls[system] ?? '#'} aria-label="CORE · início">
-        C
-      </a>
-
-      <a className="core-header__brand" href={systemUrls[system] ?? '#'} tabIndex={-1} aria-hidden="true">
-        <span className="core-header__wordmark">ORE</span>
+      <a className="core-header__mark" href={systemUrls[system] ?? '#'} aria-label="CORERX · início">
+        <img className="core-header__logo" src={coreRxLogoUrl} alt="" />
       </a>
 
       {/* ── Trocador de ambiente ─────────────────────────────────────── */}
@@ -184,9 +181,9 @@ export function CoreHeader({
       )}
 
       {onSearch && (
-        <button type="button" className="core-header__search" onClick={onSearch} aria-label="Buscar no CORE">
+        <button type="button" className="core-header__search" onClick={onSearch} aria-label="Buscar no CORERX">
           <IconeLupa />
-          <span className="core-header__search-label">Buscar no CORE...</span>
+          <span className="core-header__search-label">Buscar no CORERX...</span>
           <kbd className="core-header__kbd">⌘ K</kbd>
         </button>
       )}

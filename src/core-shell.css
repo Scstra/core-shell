@@ -1,5 +1,5 @@
 /**
- * Tokens e estilo do topo do CORE.
+ * Tokens e estilo do topo do CORERX.
  *
  * CSS puro com variáveis próprias, e não Tailwind, por um motivo prático: os
  * dois consumidores têm configurações de Tailwind diferentes, e uma classe
@@ -59,39 +59,31 @@
    então nada abaixo dele precisa mudar de cálculo. */
 .core-header--static { position: static; }
 
-/* ── Marca: "C" + "ORE" lidos como uma palavra só ─────────────────────── */
+/* ── Marca CORERX ──────────────────────────────────────────────────────── */
 
 .core-header__mark {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--core-rail-w);
-  flex-shrink: 0;
-  color: inherit;
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.core-header__brand {
-  display: flex;
-  align-items: center;
-  padding: 0 30px 0 6px;
+  width: 188px;
+  box-sizing: border-box;
+  padding: 0 18px;
   border-right: 1px solid var(--core-border);
+  flex-shrink: 0;
   color: inherit;
   text-decoration: none;
-  flex-shrink: 0;
 }
 
-.core-header__wordmark {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.44em;
-  /* O espaçamento largo cria um vão à direita da última letra; o recuo devolve
-     a simetria com o "C". */
-  margin-right: -0.44em;
+.core-header__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 28px;
+  object-fit: contain;
 }
+
+.dark .core-header__logo,
+[data-theme="dark"] .core-header__logo { filter: invert(1); }
 
 /* ── Células ──────────────────────────────────────────────────────────── */
 
@@ -396,6 +388,5 @@
   .core-header__search-label,
   .core-header__kbd { display: none; }
   .core-header__search { flex: 0 0 auto; width: 44px; justify-content: center; }
-  .core-header__mark { width: 56px; }
-  .core-header__brand { display: none; }
+  .core-header__mark { width: 144px; padding: 0 14px; }
 }
