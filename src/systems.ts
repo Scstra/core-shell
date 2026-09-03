@@ -36,6 +36,7 @@ export const LOVABLE_SYSTEM_URLS: Readonly<SystemUrls> = {
   customers: 'https://sweet-comms-center.lovable.app',
   commerce: 'https://ecommerce-semcostura.lovable.app',
   supply: 'https://semcostura-flow.lovable.app',
+  insights: 'https://insights-semcostura.lovable.app',
   ads: 'https://ads-semcostura.lovable.app',
 };
 

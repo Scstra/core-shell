@@ -1,6 +1,6 @@
 {
   "name": "@semcostura/core-shell",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Topo unificado do CORERX, compartilhado entre os sistemas Sem Costura",
   "type": "module",
   "main": "./src/index.ts",

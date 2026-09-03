@@ -25,8 +25,8 @@ import '@semcostura/core-shell/core-shell.css';
 />
 ```
 
-Insights fica oculto por padrão. Um produto pode definir outra lista de
-sistemas ocultos com `hiddenSystems`:
+Os cinco sistemas aparecem por padrão. Um produto pode ocultar módulos com
+`hiddenSystems`:
 
 ```tsx
 <CoreHeader

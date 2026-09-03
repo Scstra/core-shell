@@ -78,7 +78,7 @@ const IconeLupa = () => (
 export function CoreHeader({
   system,
   systemUrls,
-  hiddenSystems = ['insights'],
+  hiddenSystems = [],
   user,
   organization = 'Sem Costura',
   environment,
