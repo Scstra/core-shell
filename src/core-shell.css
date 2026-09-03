@@ -55,9 +55,10 @@
   font-family: var(--core-font);
 }
 
-/* Sem fixar, o topo rola junto com a página. Continua ocupando a mesma altura,
-   então nada abaixo dele precisa mudar de cálculo. */
-.core-header--static { position: static; }
+/* Sem fixar, o topo rola junto com a página. `relative` preserva o fluxo
+   normal e mantém o z-index do cabeçalho; com `static`, tabelas e buscas
+   renderizadas depois podiam aparecer por cima do seletor de sistemas. */
+.core-header--static { position: relative; }
 
 /* ── Marca CORERX ──────────────────────────────────────────────────────── */
 

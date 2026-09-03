@@ -2,8 +2,8 @@
  * Os cinco sistemas do CORE.
  *
  * O nome conceitual é estável; a URL não. Cada sistema mora num domínio
- * próprio. O projeto publicado no Lovable é o endereço canônico e uma
- * configuração de ambiente pode promovê-lo para um domínio próprio. O
+ * próprio. O domínio de produção é o endereço canônico e uma configuração de
+ * ambiente pode substituí-lo quando necessário. O
  * componente também sabe lidar com sistema **sem URL**: ele aparece
  * desabilitado, com o motivo, em vez de virar link morto.
  *
@@ -31,13 +31,13 @@ export const CORE_SYSTEMS: CoreSystem[] = [
 
 export type SystemUrls = Partial<Record<CoreSystemId, string>>;
 
-/** Endereços canônicos dos projetos publicados no workspace Sem Costura. */
+/** Endereços canônicos de produção dos projetos Sem Costura. */
 export const LOVABLE_SYSTEM_URLS: Readonly<SystemUrls> = {
-  customers: 'https://sweet-comms-center.lovable.app',
-  commerce: 'https://ecommerce-semcostura.lovable.app',
-  supply: 'https://semcostura-flow.lovable.app',
-  insights: 'https://insights-semcostura.lovable.app',
-  ads: 'https://ads-semcostura.lovable.app',
+  customers: 'https://crm.semcostura.com',
+  commerce: 'https://oms.semcostura.com',
+  supply: 'https://pcp.semcostura.com',
+  insights: 'https://insights.semcostura.com',
+  ads: 'https://ads.semcostura.com',
 };
 
 /**
