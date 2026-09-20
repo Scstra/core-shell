@@ -1,7 +1,7 @@
 # @semcostura/core-shell
 
 Topo unificado do CORERX. Fonte única do header usado por **Customers**,
-**Commerce**, **Supply**, **Insights** e **Amplify**.
+**Commerce**, **Supply**, **Insights**, **Amplify**, **CX** e **Work**.
 
 ## Por que fonte e não build
 
@@ -25,7 +25,7 @@ import '@semcostura/core-shell/core-shell.css';
 />
 ```
 
-Os cinco sistemas aparecem por padrão. Um produto pode ocultar módulos com
+Os sete sistemas aparecem por padrão. Um produto pode ocultar módulos com
 `hiddenSystems`:
 
 ```tsx
@@ -56,6 +56,8 @@ VITE_CORE_URL_COMMERCE=https://...
 VITE_CORE_URL_SUPPLY=https://pcp.semcostura.com
 VITE_CORE_URL_INSIGHTS=https://...
 VITE_CORE_URL_ADS=https://...
+VITE_CORE_URL_CX=https://cx.semcostura.com
+VITE_CORE_URL_WORK=https://work.semcostura.com
 ```
 
 Sem prefixo `VITE_` também funciona (`CORE_URL_SUPPLY`), para consumidor que não

@@ -1,5 +1,5 @@
 /**
- * Os cinco sistemas do CORE.
+ * Os sete sistemas do CORE.
  *
  * O nome conceitual é estável; a URL não. Cada sistema mora num domínio
  * próprio. O domínio de produção é o endereço canônico e uma configuração de
@@ -11,7 +11,14 @@
  * de DNS e passa a desconfiar do menu inteiro.
  */
 
-export type CoreSystemId = 'customers' | 'commerce' | 'supply' | 'insights' | 'ads';
+export type CoreSystemId =
+  | 'customers'
+  | 'commerce'
+  | 'supply'
+  | 'insights'
+  | 'ads'
+  | 'cx'
+  | 'work';
 
 export interface CoreSystem {
   id: CoreSystemId;
@@ -27,6 +34,8 @@ export const CORE_SYSTEMS: CoreSystem[] = [
   { id: 'supply', name: 'Supply', description: 'Produto, produção, estoque e compras' },
   { id: 'insights', name: 'Insights', description: 'Indicadores e análise' },
   { id: 'ads', name: 'Amplify', description: 'Campanhas e mídia paga' },
+  { id: 'cx', name: 'CX', description: 'Atendimento e experiência do cliente' },
+  { id: 'work', name: 'Work', description: 'Projetos, tarefas e melhoria contínua' },
 ];
 
 export type SystemUrls = Partial<Record<CoreSystemId, string>>;
@@ -38,6 +47,8 @@ export const LOVABLE_SYSTEM_URLS: Readonly<SystemUrls> = {
   supply: 'https://pcp.semcostura.com',
   insights: 'https://insights.semcostura.com',
   ads: 'https://ads.semcostura.com',
+  cx: 'https://cx.semcostura.com',
+  work: 'https://work.semcostura.com',
 };
 
 /**
