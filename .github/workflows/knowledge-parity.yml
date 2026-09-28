@@ -1,0 +1,39 @@
+name: Knowledge parity
+
+on:
+  pull_request:
+    paths:
+      - AGENTS.md
+      - CLAUDE.md
+      - .github/workflows/knowledge-parity.yml
+  push:
+    paths:
+      - AGENTS.md
+      - CLAUDE.md
+      - .github/workflows/knowledge-parity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  knowledge-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require identical knowledge and instructions
+        shell: bash
+        run: |
+          if ! test -f AGENTS.md || ! test -f CLAUDE.md; then
+            echo '::error::AGENTS.md e CLAUDE.md devem existir juntos na raiz.'
+            exit 1
+          fi
+          if ! cmp -s AGENTS.md CLAUDE.md; then
+            echo '::error::Atualize AGENTS.md e CLAUDE.md juntos, com conteúdo idêntico.'
+            exit 1
+          fi
+          if ! grep -Fq '<!-- SEMCOSTURA:KNOWLEDGE_PARITY:BEGIN -->' AGENTS.md; then
+            echo '::error::A regra de sincronização deve permanecer nos dois arquivos.'
+            exit 1
+          fi
