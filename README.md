@@ -1,7 +1,7 @@
 # @semcostura/core-shell
 
 Topo unificado do CORERX. Fonte única do header usado por **Customers**,
-**Commerce**, **Supply**, **Insights**, **Amplify**, **CX** e **Work**.
+**Commerce**, **Supply**, **Insights**, **Amplify**, **CX**, **Work** e **Creators**.
 
 ## Por que fonte e não build
 
@@ -25,7 +25,7 @@ import '@semcostura/core-shell/core-shell.css';
 />
 ```
 
-Os sete sistemas aparecem por padrão. Um produto pode ocultar módulos com
+Os oito sistemas aparecem por padrão. Um produto pode ocultar módulos com
 `hiddenSystems`:
 
 ```tsx
@@ -58,11 +58,17 @@ VITE_CORE_URL_INSIGHTS=https://...
 VITE_CORE_URL_ADS=https://...
 VITE_CORE_URL_CX=https://cx.semcostura.com
 VITE_CORE_URL_WORK=https://work.semcostura.com
+VITE_CORE_URL_CREATORS=https://...
 ```
 
 Sem prefixo `VITE_` também funciona (`CORE_URL_SUPPLY`), para consumidor que não
 seja Vite. Sistema sem URL aparece no trocador **desabilitado**, com o motivo —
 link morto faz o operador desconfiar do menu inteiro.
+
+Creators aparece no seletor a partir da versão 2.8.0. Até existir uma URL
+publicada e verificada, configure `VITE_CORE_URL_CREATORS` (ou
+`CORE_URL_CREATORS`) para habilitar o link; sem configuração ele fica visível
+e desabilitado. No próprio Creators, passe sua URL no mapa `systemUrls`.
 
 ## Modo quiosque
 

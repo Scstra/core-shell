@@ -1,5 +1,5 @@
 /**
- * Os sete sistemas do CORE.
+ * Os oito sistemas do CORERX.
  *
  * O nome conceitual é estável; a URL não. Cada sistema mora num domínio
  * próprio. O domínio de produção é o endereço canônico e uma configuração de
@@ -18,7 +18,8 @@ export type CoreSystemId =
   | 'insights'
   | 'ads'
   | 'cx'
-  | 'work';
+  | 'work'
+  | 'creators';
 
 export interface CoreSystem {
   id: CoreSystemId;
@@ -36,6 +37,7 @@ export const CORE_SYSTEMS: CoreSystem[] = [
   { id: 'ads', name: 'Amplify', description: 'Campanhas e mídia paga' },
   { id: 'cx', name: 'CX', description: 'Atendimento e experiência do cliente' },
   { id: 'work', name: 'Work', description: 'Projetos, tarefas e melhoria contínua' },
+  { id: 'creators', name: 'Creators', description: 'Creators e afiliados da Sem Costura' },
 ];
 
 export type SystemUrls = Partial<Record<CoreSystemId, string>>;
