@@ -75,3 +75,16 @@ por ambiente. No próprio Creators, passe sua URL no mapa `systemUrls`.
 O pacote não tem "modo quiosque": quem decide é o hospedeiro, simplesmente não
 renderizando o `CoreHeader`. É o caso do Modo Separação do Supply, que roda em
 tela cheia na estação de corte.
+
+## Login compartilhado
+
+`CoreLoginLayout` reproduz a referência Creators e importa CSS próprio, limitado ao prefixo `core-login`. Uso:
+
+```tsx
+<CoreLoginLayout systemName="Work" description="Trabalho e melhorias da Sem Costura."
+  title={sent ? 'Confira seu e-mail' : 'Entre com seu e-mail'} busy={busy}>
+  <form onSubmit={sendLink}>{/* formulário e estados do sistema */}</form>
+</CoreLoginLayout>
+```
+
+Use `type="submit"` nos botões primários e `type="button"` nos secundários. O pacote não envia e-mails, não mantém sessões, não verifica códigos nem concede acesso. `subtitle` e `note` são ajustáveis para preservar mensagens específicas de autorização.
