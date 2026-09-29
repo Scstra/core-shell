@@ -52,3 +52,9 @@ A tela de Creators é a referência visual do login de todos os sistemas interno
 As fontes Inter e Outfit do login são empacotadas localmente com suas licenças OFL. Não usar importação CSS de fontes externas: versões anteriores do Vite/Lightning CSS em alguns consumidores tratam o endereço como arquivo local. As famílias são isoladas ao login.
 
 O logo do login usa importação estática de asset para renderização idêntica no servidor e navegador (SSR); não usar `new URL(..., import.meta.url)` nesse componente.
+
+## Conexão MCP padronizada (29/09/2026)
+
+CoreMcpConsent e CoreMcpConnectionCard do core-shell centralizam conexão, carregamento, erro, recusa e confirmação no visual CORERX. Autorização concedida não prova troca de tokens: o colaborador conclui pelo botão de retorno ao assistente. Callback local (127.0.0.1) pertence ao cliente; não interceptar, trocar redirect_uri, perder state/PKCE ou afirmar conexão concluída sem evidência. URLs de retorno ficam apenas em memória; nunca registrar códigos ou parâmetros. Supabase usa skipBrowserRedirect=true para renderizar a confirmação. Manter autenticação e ACLs do sistema, incluindo scopes específicos do CX.
+
+O ajuste local do Ads em 29/09 foi startup_timeout_sec=60 e encerramento de auxiliares antigos do Codex, não mudança de expiração/reuso do OAuth no servidor. O prazo maior trata inicialização; estabilidade de renovação exige evidência posterior. Evitar clientes auxiliares concorrentes, não reduzir proteções nem reconectar repetidamente para falhas transitórias. AGENTS e CLAUDE permanecem idênticos.
