@@ -41,6 +41,6 @@ Preserve a independência de roteador e cliente de autenticação.
 
 O CORERX inclui o sistema `creators`, exibido como Creators, para gestão de
 creators e afiliados da Sem Costura. A versão 2.8.0 mantém esse item visível em
-todos os consumidores. Até a publicação ter URL verificada, habilitar pelo
-override `VITE_CORE_URL_CREATORS` / `CORE_URL_CREATORS`; sem URL, manter o item
-desabilitado conforme o contrato do seletor.
+todos os consumidores, com a URL publicada e verificada
+`https://creators.semcostura.com`. O override `VITE_CORE_URL_CREATORS` /
+`CORE_URL_CREATORS` continua disponível por ambiente.

@@ -58,17 +58,17 @@ VITE_CORE_URL_INSIGHTS=https://...
 VITE_CORE_URL_ADS=https://...
 VITE_CORE_URL_CX=https://cx.semcostura.com
 VITE_CORE_URL_WORK=https://work.semcostura.com
-VITE_CORE_URL_CREATORS=https://...
+VITE_CORE_URL_CREATORS=https://creators.semcostura.com
 ```
 
 Sem prefixo `VITE_` também funciona (`CORE_URL_SUPPLY`), para consumidor que não
 seja Vite. Sistema sem URL aparece no trocador **desabilitado**, com o motivo —
 link morto faz o operador desconfiar do menu inteiro.
 
-Creators aparece no seletor a partir da versão 2.8.0. Até existir uma URL
-publicada e verificada, configure `VITE_CORE_URL_CREATORS` (ou
-`CORE_URL_CREATORS`) para habilitar o link; sem configuração ele fica visível
-e desabilitado. No próprio Creators, passe sua URL no mapa `systemUrls`.
+Creators aparece no seletor a partir da versão 2.8.0, apontando para
+`https://creators.semcostura.com`, publicado e verificado em 29/09/2026.
+`VITE_CORE_URL_CREATORS` (ou `CORE_URL_CREATORS`) permite trocar o endereço
+por ambiente. No próprio Creators, passe sua URL no mapa `systemUrls`.
 
 ## Modo quiosque
 
