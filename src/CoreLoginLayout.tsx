@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import './core-login.css';
 
-const logoUrl = new URL('./corerx-logo.png', import.meta.url).href;
+import logoUrl from './corerx-logo.png';
 
 export interface CoreLoginLayoutProps {
   systemName: string;
