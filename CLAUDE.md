@@ -44,3 +44,7 @@ creators e afiliados da Sem Costura. A versão 2.8.0 mantém esse item visível 
 todos os consumidores, com a URL publicada e verificada
 `https://creators.semcostura.com`. O override `VITE_CORE_URL_CREATORS` /
 `CORE_URL_CREATORS` continua disponível por ambiente.
+
+## Login CORERX padronizado (29/09/2026)
+
+A tela de Creators é a referência visual do login de todos os sistemas internos. O componente `CoreLoginLayout` do core-shell centraliza cabeçalho, marca, tipografia, fundo, identificação do sistema, cartão do formulário e responsividade. Ajustes visuais comuns devem ser feitos nessa fonte e propagados aos consumidores, incluindo cópias vendorizadas. Formulários, magic link, código, callbacks, limites de reenvio e permissões continuam sob responsabilidade de cada sistema; padronização visual não cria acesso nem compartilha sessões. Manter estados de carregamento, sucesso e erro acessíveis e validar desktop e celular.
