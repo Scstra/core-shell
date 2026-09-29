@@ -50,3 +50,5 @@ todos os consumidores, com a URL publicada e verificada
 A tela de Creators é a referência visual do login de todos os sistemas internos. O componente `CoreLoginLayout` do core-shell centraliza cabeçalho, marca, tipografia, fundo, identificação do sistema, cartão do formulário e responsividade. Ajustes visuais comuns devem ser feitos nessa fonte e propagados aos consumidores, incluindo cópias vendorizadas. Formulários, magic link, código, callbacks, limites de reenvio e permissões continuam sob responsabilidade de cada sistema; padronização visual não cria acesso nem compartilha sessões. Manter estados de carregamento, sucesso e erro acessíveis e validar desktop e celular.
 
 As fontes Inter e Outfit do login são empacotadas localmente com suas licenças OFL. Não usar importação CSS de fontes externas: versões anteriores do Vite/Lightning CSS em alguns consumidores tratam o endereço como arquivo local. As famílias são isoladas ao login.
+
+O logo do login usa importação estática de asset para renderização idêntica no servidor e navegador (SSR); não usar `new URL(..., import.meta.url)` nesse componente.
