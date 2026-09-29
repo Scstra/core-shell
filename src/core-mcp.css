@@ -1,0 +1,108 @@
+.core-mcp-consent ul {
+  padding-left: 18px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.7;
+}
+.core-mcp-consent li + li {
+  margin-top: 8px;
+}
+.core-login .core-mcp-consent button.core-mcp-approve {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  margin: 18px 0 0;
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.core-login .core-mcp-consent button.core-mcp-approve:hover:not(:disabled) {
+  background: #333;
+}
+.core-login .core-mcp-consent label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+.core-login .core-mcp-consent input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  accent-color: #111;
+}
+.core-mcp-card {
+  padding: 28px;
+  border: 1px solid #e4e3df;
+  background: #fff;
+  color: #111;
+  border-radius: 2px;
+  font-family: "Core Login Inter", sans-serif;
+}
+.core-mcp-card h2 {
+  font-family: "Core Login Outfit", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 12px 0;
+}
+.core-mcp-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #737373;
+}
+.core-mcp-card p,
+.core-mcp-card ol {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #656565;
+  margin: 12px 0;
+}
+.core-mcp-card ol {
+  padding-left: 20px;
+  list-style: decimal;
+}
+.core-mcp-endpoint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.core-mcp-endpoint code {
+  flex: 1;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  font-size: 12px;
+}
+.core-mcp-endpoint button {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: #f8f7f4;
+  color: #111;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+.core-mcp-card button:focus-visible {
+  outline: 2px solid #444;
+  outline-offset: 3px;
+}
+@media (max-width: 720px) {
+  .core-mcp-card {
+    padding: 20px;
+  }
+}
+
+.core-mcp-consent fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
