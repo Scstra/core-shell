@@ -59,7 +59,7 @@ VITE_CORE_URL_ADS=https://...
 VITE_CORE_URL_CX=https://cx.semcostura.com
 VITE_CORE_URL_WORK=https://work.semcostura.com
 VITE_CORE_URL_CREATORS=https://creators.semcostura.com
-VITE_CORE_URL_SEARCH=https://search.semcostura.com
+VITE_CORE_URL_SEARCH=https://search-semcostura.lovable.app
 ```
 
 Sem prefixo `VITE_` também funciona (`CORE_URL_SUPPLY`), para consumidor que não

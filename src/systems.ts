@@ -54,6 +54,7 @@ export const LOVABLE_SYSTEM_URLS: Readonly<SystemUrls> = {
   cx: 'https://cx.semcostura.com',
   work: 'https://work.semcostura.com',
   creators: 'https://creators.semcostura.com',
+  search: 'https://search-semcostura.lovable.app',
 };
 
 /**
