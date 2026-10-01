@@ -1,5 +1,5 @@
 /**
- * Os oito sistemas do CORERX.
+ * Os nove sistemas do CORERX.
  *
  * O nome conceitual é estável; a URL não. Cada sistema mora num domínio
  * próprio. O domínio de produção é o endereço canônico e uma configuração de
@@ -19,7 +19,8 @@ export type CoreSystemId =
   | 'ads'
   | 'cx'
   | 'work'
-  | 'creators';
+  | 'creators'
+  | 'search';
 
 export interface CoreSystem {
   id: CoreSystemId;
@@ -38,6 +39,7 @@ export const CORE_SYSTEMS: CoreSystem[] = [
   { id: 'cx', name: 'CX', description: 'Atendimento e experiência do cliente' },
   { id: 'work', name: 'Work', description: 'Projetos, tarefas e melhoria contínua' },
   { id: 'creators', name: 'Creators', description: 'Creators e afiliados da Sem Costura' },
+  { id: 'search', name: 'Search', description: 'SEO da Sem Costura' },
 ];
 
 export type SystemUrls = Partial<Record<CoreSystemId, string>>;
@@ -52,6 +54,7 @@ export const LOVABLE_SYSTEM_URLS: Readonly<SystemUrls> = {
   cx: 'https://cx.semcostura.com',
   work: 'https://work.semcostura.com',
   creators: 'https://creators.semcostura.com',
+  search: 'https://search-semcostura.lovable.app',
 };
 
 /**
